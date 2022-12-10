@@ -13,7 +13,9 @@ public class AddressBookMain {
             System.out.println("1. Press to  Add ");
             System.out.println("2.Press to Display");
             System.out.println("3. Press to Edit");
+            System.out.println("4.Press to Delete ");
             System.out.println("Enter your choice :");
+
             ch = sc.nextInt();
             switch (ch) {
                 case 1:
@@ -75,6 +77,27 @@ public class AddressBookMain {
                         System.out.println("Record not found");
                     } else {
                         System.out.println("Record edited successfully");
+                    }
+                    System.out.println("...........................");
+                    break;
+                case 4:
+                    found = false;
+                    System.out.println("Enter first name to delete record:");
+                    firstName = sc1.nextLine();
+                    System.out.println(".....................................");
+                    i= c.iterator();
+                    while (i.hasNext()) {
+                        AddressBook a = i.next();
+                        if (a.getFirstName() == firstName) {
+                            i.remove();
+                            found = true;
+                        }
+                    }
+                    System.out.println(".....................................");
+                    if (!found) {
+                            System.out.println("Record not found");
+                    } else {
+                            System.out.println("Record Deleted successfully");
                     }
                     System.out.println("...........................");
                     break;
