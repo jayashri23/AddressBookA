@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c7406936-e0fe-458e-83aa-47d7136824ab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/addressbooka/AddressBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/addressbooka/AddressBook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/addressbooka/AddressBookMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/addressbooka/AddressBookMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

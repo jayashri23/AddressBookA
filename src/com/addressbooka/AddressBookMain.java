@@ -4,104 +4,149 @@ import java.util.*;
 
 public class AddressBookMain {
     public static void main(String[] args) {
-        List<AddressBook> c = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
-        Scanner sc1 = new Scanner(System.in);
-        int ch;
+        List<AddressBook> c = new ArrayList<AddressBook>(); //Collection of data inside this//Acees functinality of list iterator
+        Scanner sc = new Scanner(System.in); //For taking input as a integer
+        Scanner sc1 = new Scanner(System.in); //For taking input as a string
+        System.out.println("**** WELCOME TO ADDRESSBOOK PROGRAM ****");
+        int ch; //choice variable
         do {
-            System.out.println("Welcome to Address Book");
-            System.out.println("1. Press to  Add ");
-            System.out.println("2.Press to Display");
-            System.out.println("3. Press to Edit");
-            System.out.println("4.Press to Delete ");
-            System.out.println("Enter your choice :");
 
+
+            System.out.println("\n1.ADD");
+            System.out.println("2.DISPLAY");
+            System.out.println("3.SEARCH");
+            System.out.println("4.DELETE");
+            System.out.println("5.UPDATE");
+            System.out.println("Enter Your Choice:");
             ch = sc.nextInt();
             switch (ch) {
                 case 1:
-                    System.out.println("Enter the first name :");
+                    System.out.print("Enter the First Name:");
                     String firstName = sc1.nextLine();
-                    System.out.println("Enter the last name:");
+                    System.out.print("Enter the Last Name:");
                     String lastName = sc1.nextLine();
-                    System.out.println("Enter the Address :");
+                    System.out.print("Enter the Address:");
                     String address = sc1.nextLine();
-                    System.out.println("Enter the city :");
+                    System.out.print("Enter the City:");
                     String city = sc1.nextLine();
-                    System.out.println("Enter the State :");
+                    System.out.print("Enter the State:");
                     String state = sc1.nextLine();
-                    System.out.println("Enter the PhoneNumber :");
+                    System.out.print("Enter the Zip:");
+                    int zip = sc.nextInt();
+                    System.out.print("Enter the PhoneNumber:");
                     int phoneNumber = sc.nextInt();
-                    System.out.println("Enter the Email :");
+                    System.out.print("Enter the Email:");
                     String email = sc1.nextLine();
-                    c.add(new AddressBook(firstName, lastName, address, city, state, phoneNumber, email));
+                    System.out.print("Record Added SucessFully");
+                    c.add(new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber, email));
+                    checkUniqueName(firstName);
                     break;
+
                 case 2:
-                    System.out.println(".....................................");
-                    Iterator<AddressBook> i = c.iterator();
+                    System.out.println("---------------------------------");//Display the record
+                    Iterator<AddressBook> i = c.iterator();//function retrieve each record one by one
                     while (i.hasNext()) {
                         AddressBook a = i.next();
                         System.out.println(a);
+
                     }
-                    System.out.println(".....................................");
+                    System.out.println("---------------------------------");
+
                     break;
 
+
                 case 3:
-                    boolean found = false;
-                    System.out.println("Enter first name to edit record:");
+                    boolean found = false;  // For searching
+                    System.out.print("Enter the First Name to search:");
                     firstName = sc1.nextLine();
-                    System.out.println(".....................................");
-                    ListIterator<AddressBook> li = c.listIterator();
-                    while (li.hasNext()) {
-                        AddressBook a = li.next();
-                        if (a.getFirstName() == firstName) {
-                            System.out.println("Enter the new First name:");
-                            firstName = sc1.nextLine();
-                            System.out.println("Enter the new last name:");
-                            lastName = sc1.nextLine();
-                            System.out.println("Enter the new Address :");
-                            address = sc1.nextLine();
-                            System.out.println("Enter the new city :");
-                            city = sc1.nextLine();
-                            System.out.println("Enter the new State :");
-                            state = sc1.nextLine();
-                            System.out.println("Enter the new PhoneNumber :");
-                            phoneNumber = sc.nextInt();
-                            System.out.println("Enter the new Email :");
-                            email = sc1.nextLine();
-                            li.set(new AddressBook(firstName, lastName, address, city, state, phoneNumber, email));
+                    System.out.println("---------------------------------");
+                    i = c.iterator();//function retrieve each record one by one/instance of iterator
+                    while (i.hasNext()) {
+                        AddressBook a = i.next();
+                        if (a.getfirstName() == firstName) {
+                            System.out.println(a);
+                            System.out.println("Record search Successfully. ");
                             found = true;
                         }
                     }
-                    System.out.println("........................................");
+
+                    if (!found) {
+                        System.out.println("Record not found");
+                    }
+                    System.out.println("---------------------------------");
+                    break;
+                case 4:
+                    found = false;  // Delete the record
+                    System.out.println("Enter Name to Delete Record:");
+                    firstName = sc1.nextLine();
+                    System.out.println("---------------------------------");
+                    i = c.iterator();//function retrieve each record one by one
+                    while (i.hasNext()) {
+                        AddressBook a = i.next();
+                        if (a.getfirstName() == firstName) {
+                            i.remove();
+                            ;
+                            found = true;
+                        }
+                    }
+                    System.out.println("---------------------------------");
                     if (!found) {
                         System.out.println("Record not found");
                     } else {
-                        System.out.println("Record edited successfully");
+                        System.out.println("Record Delete SucessFully:");
                     }
-                    System.out.println("...........................");
+                    System.out.println("---------------------------------");
                     break;
-                case 4:
-                    found = false;
-                    System.out.println("Enter first name to delete record:");
+
+                case 5:
+                    found = false;  // Update the record
+                    System.out.println("Enter Name to Update Record:");
                     firstName = sc1.nextLine();
-                    System.out.println(".....................................");
-                    i= c.iterator();
-                    while (i.hasNext()) {
-                        AddressBook a = i.next();
-                        if (a.getFirstName() == firstName) {
-                            i.remove();
+                    System.out.println("---------------------------------");
+                    ListIterator<AddressBook> li = c.listIterator();//fInitialize collection to list iterator
+                    while (li.hasNext()) {
+                        AddressBook a = li.next();
+                        if (a.getfirstName() == firstName) {
+                            System.out.print("Enter the New First Name:");
+                            firstName = sc1.nextLine();
+                            System.out.print("Enter the New Last Name:");
+                            lastName = sc1.nextLine();
+                            System.out.print("Enter the New Address:");
+                            address = sc1.nextLine();
+                            System.out.print("Enter the New City:");
+                            city = sc1.nextLine();
+                            System.out.print("Enter the New State:");
+                            state = sc1.nextLine();
+                            System.out.print("Enter the New Zip:");
+                            zip = sc.nextInt();
+                            System.out.print("Enter the New PhoneNumber:");
+                            phoneNumber = sc.nextInt();
+                            System.out.print("Enter the New Email:");
+                            email = sc1.nextLine();
+                            li.set(new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber, email));
                             found = true;
                         }
                     }
-                    System.out.println(".....................................");
+                    System.out.println("---------------------------------");
                     if (!found) {
-                            System.out.println("Record not found");
+                        System.out.println("Record not found");
                     } else {
-                            System.out.println("Record Deleted successfully");
+                        System.out.println("Record Updated SucessFully:");
                     }
-                    System.out.println("...........................");
+                    System.out.println("---------------------------------");
                     break;
-                }
-            } while (ch != 0) ;
-        }
+            }
+        } while (ch != 0);
     }
+    public static boolean checkUniqueName(String firstName) {
+        List<AddressBook> c = new ArrayList<AddressBook>();
+        Iterator<AddressBook> i = c.iterator();
+        ListIterator<AddressBook> li = c.listIterator();
+        AddressBook a = li.next();
+        if (a.getfirstName() == firstName){
+            System.out.println("Name already exist");
+            return true;
+        }
+        return false;
+             }
+          }
