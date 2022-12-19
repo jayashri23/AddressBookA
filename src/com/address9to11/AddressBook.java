@@ -90,14 +90,10 @@ public class AddressBook {
 
     public String getEmail() {
         return email;
-
     }
-
     public void setEmail(String email) {
         this.email=email;
-
     }
-
     @Override
     public String toString() {// Override method
         return " First Name: " + firstName + " Last Name: " + lastName + " Address: " + address + " City: "
