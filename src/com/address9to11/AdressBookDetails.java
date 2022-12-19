@@ -162,19 +162,6 @@ public class AdressBookDetails {
                 System.out.println("--------------------");
         }
     }
-    public void countByStateOrCity() {
-        System.out.println("Details count by \n1. City Name \n2. State Name");
-        int choice = sc.nextInt();
-        switch (choice) {
-            case 1:
-                countByCity();
-                break;
-            case 2:
-                countByState();
-            default:
-                System.out.println("--------------------");
-        }
-    }
     public static void searchState(){
         list.stream()
                 .filter(state -> state.getState().equalsIgnoreCase("Maharashtra"))
@@ -188,22 +175,6 @@ public class AdressBookDetails {
                 .filter(cityName -> cityName.getcity().equalsIgnoreCase("mumbai"))
                 .sorted( Comparator.comparing(AddressBook::getfirstName))
                 .forEach(cityName-> System.out.println(cityName.getfirstName()));
-        System.out.println(list);
-
-    }
-    public static void countByState(){
-
-        long count=  list.stream()
-                .filter(stateName -> stateName.getState().equalsIgnoreCase("mumbai"))
-                .count();
-        System.out.println(list);
-    }
-    public static void countByCity(){
-
-
-        long count=  list.stream()
-                .filter(cityName -> cityName.getcity().equalsIgnoreCase("mumbai"))
-                .count();
         System.out.println(list);
     }
 }
