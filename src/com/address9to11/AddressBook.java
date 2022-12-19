@@ -1,7 +1,6 @@
 package com.address9to11;
 
 public class AddressBook {
-
     private String firstName;
     private String lastName;
     private String address;
@@ -101,7 +100,9 @@ public class AddressBook {
 
     @Override
     public String toString() {// Override method
-        return " First Name: " + firstName + " Last Name: " + lastName + " Address: " + address + " City: " + city + " State: " + state + " Zip: " + zip + " Phone Number: " + phoneNumber + " Email: " + email;
+        return " First Name: " + firstName + " Last Name: " + lastName + " Address: " + address + " City: "
+                + city + " State: " + state + " Zip: " + zip + " Phone Number: " + phoneNumber + " Email: "
+                + email;
 
     }
 }
