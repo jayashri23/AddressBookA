@@ -1,6 +1,7 @@
 package com.address9to11;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AdressBookDetails {
     public static Scanner sc = new Scanner(System.in);
@@ -162,6 +163,25 @@ public class AdressBookDetails {
                 System.out.println("--------------------");
         }
     }
+
+    public void sortDetails() {
+        System.out.println("Details search by\n 1. First Name\n2. State Name\n3. Zip \n 4.City Name");
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1:
+                sortByFirstName();
+                break;
+            case 2:
+                sortByState();
+            case 3:
+                sortByzip();
+                break;
+            case 4:
+                sortByCity();
+            default:
+                System.out.println("--------------------------------------------------------");
+        }
+    }
     public void countByStateOrCity() {
         System.out.println("Details count by \n1. City Name \n2. State Name");
         int choice = sc.nextInt();
@@ -172,7 +192,7 @@ public class AdressBookDetails {
             case 2:
                 countByState();
             default:
-                System.out.println("--------------------");
+                System.out.println("--------------------------------------------------------");
         }
     }
     public static void searchState(){
@@ -189,13 +209,14 @@ public class AdressBookDetails {
                 .sorted( Comparator.comparing(AddressBook::getfirstName))
                 .forEach(cityName-> System.out.println(cityName.getfirstName()));
         System.out.println(list);
+
     }
     public static void countByState(){
 
         long count=  list.stream()
-                .filter(stateName -> stateName.getState().equalsIgnoreCase("mumbai"))
+                .filter(stateName -> stateName.getState().equalsIgnoreCase("maharashtra"))
                 .count();
-        System.out.println(list);
+        System.out.println(count);
     }
     public static void countByCity(){
 
@@ -203,6 +224,33 @@ public class AdressBookDetails {
         long count=  list.stream()
                 .filter(cityName -> cityName.getcity().equalsIgnoreCase("mumbai"))
                 .count();
-        System.out.println(list);
+        System.out.println(count);
+    }
+    public static void sortByFirstName(){
+
+        list.stream()
+                .sorted(Comparator.comparing(AddressBook::getfirstName))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+    }
+    public static void sortByState(){
+        list.stream()
+                .sorted(Comparator.comparing(AddressBook::getState))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+    }
+
+    public static void sortByCity(){
+        list.stream()
+                .sorted(Comparator.comparing(AddressBook::getcity))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+    }
+
+    public static void sortByzip(){
+        list.stream()
+                .sorted(Comparator.comparing(AddressBook::getZip))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
     }
 }

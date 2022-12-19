@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdressBookMAin {
+
     public static Scanner sc = new Scanner(System.in);
     public static List<AddressBook> list = new ArrayList<AddressBook>();
     public static void main(String[] args) {
@@ -20,7 +21,8 @@ public class AdressBookMAin {
             System.out.println("4.Delete Contact");
             System.out.println("5.Search Contact");
             System.out.println("6.Count Contact");
-            System.out.println("7.Exit");
+            System.out.println("7.Sort Contact");
+            System.out.println("8.Exit");
             System.out.println("Enter Choice: ");
 
             int option = sc.nextInt();
@@ -78,8 +80,13 @@ public class AdressBookMAin {
                     addressBook.countByStateOrCity();
                     System.out.println("--------------------------------------------------------");
                     break;
-
                 case 7:
+                    System.out.println("--------------------------------------------------------");
+                    addressBook.sortDetails();
+                    System.out.println("--------------------------------------------------------");
+                    break;
+
+                case 8:
                     flag =false;
                     break;
             }
