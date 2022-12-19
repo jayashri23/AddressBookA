@@ -233,24 +233,4 @@ public class AdressBookDetails {
                 .collect(Collectors.toList())
                 .forEach(System.out::println);
     }
-    public static void sortByState(){
-        list.stream()
-                .sorted(Comparator.comparing(AddressBook::getState))
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
-    }
-
-    public static void sortByCity(){
-        list.stream()
-                .sorted(Comparator.comparing(AddressBook::getcity))
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
-    }
-
-    public static void sortByzip(){
-        list.stream()
-                .sorted(Comparator.comparing(AddressBook::getZip))
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
-    }
 }
