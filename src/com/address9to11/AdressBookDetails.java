@@ -1,13 +1,10 @@
 package com.address9to11;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Scanner;
+import java.util.*;
 
 public class AdressBookDetails {
-
     public static Scanner sc = new Scanner(System.in);
-    public Collection<AddressBook> list = new ArrayList<AddressBook>();
+    public static List<AddressBook> list = new ArrayList<AddressBook>();
 
     public void addDetails() {
         System.out.println("Enter the Details: ");
@@ -40,6 +37,7 @@ public class AdressBookDetails {
         list.add(new AddressBook(firstName, lastName, address, city, state, zip, email, phoneNumber));
 
     }
+
     public void displayDetails() {
         if (list.isEmpty()) {
             System.out.println("Not Found!");
@@ -50,10 +48,11 @@ public class AdressBookDetails {
         }
 
     }
+
     public boolean updateDetails(String Name) {
         int flag = 0;
-        for (AddressBook contact : list) {
-            if (contact.getfirstName().equals(Name)) {
+        for (AddressBook deatils : list) {
+            if (deatils.getfirstName().equals(Name)) {
                 System.out.println("Enter option to Update:");
                 System.out.println("1.FirstName");
                 System.out.println("2.LastName");
@@ -69,49 +68,49 @@ public class AdressBookDetails {
                     case 1: {
                         System.out.println("Enter Updated First Name: ");
                         String firstName = sc.next();
-                        contact.setFirstName(firstName);
+                        deatils.setFirstName(firstName);
                         break;
                     }
                     case 2: {
                         System.out.println("Enter Updated last name: ");
                         String lastName = sc.next();
-                        contact.setLastName(lastName);
+                        deatils.setLastName(lastName);
                         break;
                     }
                     case 3: {
                         System.out.println("Enter Updated Address: ");
                         String address = sc.next();
-                        contact.setAddress(address);
+                        deatils.setAddress(address);
                         break;
                     }
                     case 4: {
                         System.out.println("Enter Updated City: ");
                         String city = sc.next();
-                        contact.setCity(city);
+                        deatils.setCity(city);
                         break;
                     }
                     case 5: {
                         System.out.println("Enter Updated State: ");
                         String state = sc.next();
-                        contact.setState(state);
+                        deatils.setState(state);
                         break;
                     }
                     case 6: {
                         System.out.println("Enter Updated Zip : ");
                         String zip = sc.next();
-                        contact.setZip(zip);
+                        deatils.setZip(zip);
                         break;
                     }
                     case 7: {
                         System.out.println("Enter Updated Phone Number:");
                         String phoneNumber = sc.next();
-                        contact.setPhoneNumber(phoneNumber);
+                        deatils.setPhoneNumber(phoneNumber);
                         break;
                     }
                     case 8: {
                         System.out.println("Enter Updated Email: ");
                         String email = sc.next();
-                        contact.setEmail(email);
+                        deatils.setEmail(email);
                         break;
                     }
 
@@ -123,6 +122,7 @@ public class AdressBookDetails {
         }
         return flag == 1;
     }
+
     public boolean deleteDetail(String name) {
         int flag = 0;
         for (AddressBook contact : list) {
@@ -134,6 +134,7 @@ public class AdressBookDetails {
         }
         return flag == 1;
     }
+
     public boolean checkUniqueName(String name) {
         int flag = 0;
         for (AddressBook contact : list) {
@@ -146,5 +147,35 @@ public class AdressBookDetails {
             return true;
         }
         return false;
+    }
+
+    public void searchDetails() {
+        System.out.println("Details search by \n1. City Name \n2. State Name");
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1:
+                searchState();
+                break;
+            case 2:
+                searchCity();
+            default:
+                System.out.println("--------------------");
+        }
+    }
+    public static void searchState(){
+        list.stream()
+                .filter(state -> state.getState().equalsIgnoreCase("Maharashtra"))
+                .sorted( Comparator.comparing(AddressBook::getfirstName))
+                .forEach(state-> System.out.println(state.getfirstName()));
+        System.out.println(list);
+    }
+    public static void searchCity(){
+
+        list.stream()
+                .filter(cityName -> cityName.getcity().equalsIgnoreCase("mumbai"))
+                .sorted( Comparator.comparing(AddressBook::getfirstName))
+                .forEach(cityName-> System.out.println(cityName.getfirstName()));
+        System.out.println(list);
+
     }
 }
